@@ -1,13 +1,13 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import * as clipboardy from 'clipboardy';
 import isMarkdown from './is-markdown';
 import createHTML from './create-html';
 import createZip from './create-zip';
 import insertImage from './insert-images';
 import insertFiles from './insert-files';
 import insertWrap from './insert-wrap';
+import insertExcelTable from './insert-excel-table';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -38,16 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerTextEditorCommand('extension.insertExcelTable', async (textEditor) => {
 			// The code you place here will be executed every time your command is executed
 			if (isMarkdown(textEditor)) {
-				try {
-					const result = await clipboardy.read();
-					textEditor.edit((editBuilder) => {
-						editBuilder.insert(textEditor.selection.active, `
-${result}
-`);
-					});
-				} catch (error) {
-					throw error;
-				}
+				await insertExcelTable(textEditor);
 			}
 		})
 	);
