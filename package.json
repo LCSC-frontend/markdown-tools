@@ -2,8 +2,13 @@
 	"name": "markdown-tools",
 	"displayName": "Markdown Tools",
 	"description": "markdown small tools",
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#C80000",
+		"theme": "light"
+	},
 	"publisher": "lcsc",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.36.0"
 	},
